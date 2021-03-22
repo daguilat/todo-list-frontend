@@ -1,0 +1,43 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> 
+
+
+<div class="social-box">
+    <div class="container">
+        <div class="col-lg-4 col-xs-12 text-center" >
+            <a data-toggle="modal" data-target="#squarespaceModal">
+                <div class="box">
+                    <div class="box-title">
+                        <h3>Add new task</h3>
+                        <img src="assets/add-icon.svg" id="icon" alt="Add Icon"/>
+                    </div>
+                </div>
+            </a>
+        </div>	 
+
+     	<div class="row">	
+            <div class="col-lg-4 col-xs-12 text-center" *ngFor="let task of tasks">
+                <div class="box">
+                    <div class="box-title">
+                        <h3>{{task.title}}</h3>
+                    </div>
+                    <div class="box-text">
+                        <span>{{task.description}}</span>
+                    </div>
+                    <div class="box-text">
+                        <span>{{task.user.first_name}} {{task.user.last_name}}</span>
+                    </div>
+                    <div class="box-btn">
+                        <a data-toggle="modal" data-target="#squarespaceModal">
+                            <img src="assets/edit-icon.svg" id="icon" alt="Edit Icon" (click)="editTask(task)"/>
+                        </a>
+                        <a>
+                            <img src="assets/delete-icon.svg" id="icon" alt="Delete Icon" (click)="deleteTask(task)"/>
+                        </a>    
+                    </div>
+                </div>
+            </div>	 
+		</div>	
+        
+        <app-edit-task></app-edit-task>
+    </div>
+</div>

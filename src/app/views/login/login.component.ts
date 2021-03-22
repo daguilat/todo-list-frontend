@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
       let dataResponse: LoginResponseI = data;
       if(dataResponse.status == "200"){
         localStorage.setItem("token", dataResponse.token);
+        localStorage.setItem("user_id", dataResponse.user_id);
         this.router.navigate(["dashboard"]);
       } else {
         this.errorStatus = true;
