@@ -1,5 +1,9 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> 
 
+<div class="alert alert-danger page-alert" id="alert-4" *ngIf="deleteError">
+    <button type="button" class="close"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+    <strong>There was a problem deleting the task</strong>
+</div>
 
 <div class="social-box">
     <div class="container">

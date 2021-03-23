@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { mapResponseI } from 'src/app/model/mapResponse.interface';
 import { TaskI } from 'src/app/model/task.interface';
 import { TaskService } from '../../services/task.service';
 
@@ -10,7 +11,7 @@ import { TaskService } from '../../services/task.service';
 export class DashboardComponent implements OnInit {
 
   tasks: TaskI[] = [];
-  deleteResponse: any;
+  deleteError : boolean = false;
 
   constructor(private taskService: TaskService) { }
 
@@ -28,10 +29,20 @@ export class DashboardComponent implements OnInit {
   }
 
   deleteTask(task: TaskI) {
-    this.taskService.deleteTask(task.task_id).subscribe(data => {
-      console.log(data);
-      this.deleteResponse = data;
+    let task_id = task.task_id;
+    this.taskService.deleteTask(task_id).subscribe(data => {
+      let dataResponse: any = data;
+      if(dataResponse.status != "200"){
+        this.deleteError = false;
+      }
+      let refreshTasks: TaskI[] = [];
+      this.tasks.forEach((task) => {
+        if(task.task_id == task_id){}
+        else refreshTasks.push(task);
+      });
+      this.tasks = refreshTasks;
     });
+
   }
 
 }
