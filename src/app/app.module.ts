@@ -7,7 +7,8 @@ import { HeaderComponent } from './templates/header/header.component';
 import { FooterComponent } from './templates/footer/footer.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { EditTaskComponent } from './views/edit-task/edit-task.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,6 @@ import { EditTaskComponent } from './views/edit-task/edit-task.component';
     HeaderComponent,
     FooterComponent,
     routingComponents,
-    EditTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +23,8 @@ import { EditTaskComponent } from './views/edit-task/edit-task.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

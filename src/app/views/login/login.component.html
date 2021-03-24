@@ -6,21 +6,41 @@
     <div class="fadeIn first">
       <img src="assets/user-icon.svg" id="icon" alt="User Icon"/>
     </div>
+    <div *ngIf="!userRegistration">
+      <!-- Login Form -->
+      <form [formGroup] = "loginForm" (ngSubmit) = "onLogin(loginForm.value)">
+        <input type="text" id="login" class="fadeIn second" placeholder="Username" formControlName="username">
+        <input type="password" id="password" class="fadeIn third" placeholder="Password" formControlName="password">
+        <input type="submit" class="fadeIn fourth" value="Log In">
+      </form>
 
-    <!-- Login Form -->
-    <form [formGroup] = "loginForm" (ngSubmit) = "onLogin(loginForm.value)">
-      <input type="text" id="login" class="fadeIn second" placeholder="login" formControlName="username">
-      <input type="password" id="password" class="fadeIn third" placeholder="password" formControlName="password">
-      <input type="submit" class="fadeIn fourth" value="Log In">
-    </form>
-
-    <div class="alert alert-danger" *ngIf="errorStatus">
-      <p>{{errorMessage}}</p>
+      <div class="alert alert-danger" *ngIf="errorStatus">
+        <p>{{errorMessage}}</p>
+      </div>
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" (click)="registerButton()">Register</a>
+      </div>
     </div>
-    <!-- Remind Passowrd -->
-    <!-- <div id="formFooter">
-      <a class="underlineHover" href="#">Forgot Password?</a>
-    </div> -->
+
+    <div *ngIf="userRegistration">
+      <!-- Login Form -->
+      <form [formGroup] = "registerForm" (ngSubmit) = "onRegister(registerForm.value)">
+        <input type="text" id="first_name" class="fadeIn second" placeholder="First name" formControlName="first_name">
+        <input type="text" id="last_name" class="fadeIn second" placeholder="Last name" formControlName="last_name">
+        <input type="text" id="username" class="fadeIn second" placeholder="Username" formControlName="username">
+        <input type="password" id="password" class="fadeIn third" placeholder="Password" formControlName="password">
+        <input type="submit" class="fadeIn fourth" value="Register">
+      </form>
+
+      <div class="alert alert-danger" *ngIf="errorStatus">
+        <p>{{errorMessage}}</p>
+      </div>
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" (click)="loginButton()">Log in</a>
+      </div>
+    </div>
 
   </div>
 </div>

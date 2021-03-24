@@ -8,7 +8,7 @@
 <div class="social-box">
     <div class="container">
         <div class="col-lg-4 col-xs-12 text-center" >
-            <a data-toggle="modal" data-target="#squarespaceModal">
+            <a (click)="createTask()">
                 <div class="box">
                     <div class="box-title">
                         <h3>Add new task</h3>
@@ -22,26 +22,25 @@
             <div class="col-lg-4 col-xs-12 text-center" *ngFor="let task of tasks">
                 <div class="box">
                     <div class="box-title">
-                        <h3>{{task.title}}</h3>
+                        <h1>{{task.title}}</h1>
                     </div>
                     <div class="box-text">
-                        <span>{{task.description}}</span>
+                        <p>{{task.description}}</p>
                     </div>
                     <div class="box-text">
                         <span>{{task.user.first_name}} {{task.user.last_name}}</span>
+                        
                     </div>
                     <div class="box-btn">
-                        <a data-toggle="modal" data-target="#squarespaceModal">
-                            <img src="assets/edit-icon.svg" id="icon" alt="Edit Icon" (click)="editTask(task)"/>
+                        <a (click)="editTask(task)">
+                            <img src="assets/edit-icon.svg" id="icon" alt="Edit Icon"/>
                         </a>
-                        <a>
+                        <a style="margin-left: 15px;">
                             <img src="assets/delete-icon.svg" id="icon" alt="Delete Icon" (click)="deleteTask(task)"/>
                         </a>    
                     </div>
                 </div>
             </div>	 
 		</div>	
-        
-        <app-edit-task></app-edit-task>
     </div>
 </div>

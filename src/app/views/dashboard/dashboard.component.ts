@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { mapResponseI } from 'src/app/model/mapResponse.interface';
+import { Router } from '@angular/router';
 import { TaskI } from 'src/app/model/task.interface';
+import { UserI } from 'src/app/model/user.interface';
+import { UserService } from 'src/app/services/user.service';
 import { TaskService } from '../../services/task.service';
 
 @Component({
@@ -8,24 +10,32 @@ import { TaskService } from '../../services/task.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
 export class DashboardComponent implements OnInit {
 
+  users: UserI[] = [];
   tasks: TaskI[] = [];
   deleteError : boolean = false;
+  closeResult = '';
 
-  constructor(private taskService: TaskService) { }
+  constructor(private taskService: TaskService, private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.taskService.getAllTasks().subscribe(data => {
       this.tasks = data;
     });
+
+    this.userService.getAllUsers().subscribe(data => {
+      this.users = data;
+    });
   }
 
-  addTask() {
-    
+  createTask(){
+    this.router.navigate(["edit-task"]);
   }
 
-  editTask(task: TaskI) {
+  editTask(task: TaskI){
+    this.router.navigate(["edit-task"], {state: task});
   }
 
   deleteTask(task: TaskI) {

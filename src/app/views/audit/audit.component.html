@@ -1,0 +1,24 @@
+<div>
+    <h1>User auditory</h1>
+    <table class="table">
+       <thead>
+          <tr>
+             <th>ID</th>
+             <th>Username</th>
+             <th>Task</th>
+             <th>Activity</th>
+             <th>Date</th>
+          </tr>
+       </thead>
+       <tbody>
+          <tr *ngFor="let audit of audits">
+             <th>{{ audit.audit_id }}</th>
+             <td>{{ audit.user.username }}</td>
+             <td *ngIf="!audit.task"> - </td>
+             <td *ngIf="audit.task">{{ audit.task.title }}</td>
+             <td>{{ audit.activity}}</td>
+             <td>{{ audit.date }}</td>
+          </tr>
+       </tbody>
+    </table>
+ </div>
